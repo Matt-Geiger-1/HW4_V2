@@ -13,11 +13,17 @@
     <div>
       <%= flash["notice"] %>
     </div>
+
     <div>
       <a href="/">Home</a>
-      <a href="/logout">Logout</a>
-      <a href="/login">Login</a>
-      <a href="/users/new">Signup</a>
+
+      <% if logged_in? %>
+        <span><%= current_user.username %></span>
+        <a href="/logout">Logout</a>
+      <% else %>
+        <a href="/login">Login</a>
+        <a href="/signup">Signup</a>
+      <% end %>
     </div>
 
     <%= yield %>

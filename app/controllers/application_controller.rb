@@ -1,7 +1,20 @@
+# Provides authentication
 class ApplicationController < ActionController::Base
-  before_action :current_user
+  helper_method :current_user, :logged_in?
 
   def current_user
-    puts "------------------ code before every request ------------------"
+    if session[:user_id]
+      @current_user ||= User.find_by(id: session[:user_id])
+    end
+  end
+
+  def logged_in?
+    current_user != nil
+  end
+
+  def require_login
+    if !logged_in?
+      redirect_to "/login"
+    end
   end
 end

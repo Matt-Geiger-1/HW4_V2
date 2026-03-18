@@ -1,22 +1,22 @@
 <h1>New Entry</h1>
 
-<form action="/entries" method="post">
-  <input type="hidden" name="place_id" value="<%= params["place_id"] %>">
+<form action="/places/<%= @place["id"] %>/entries" method="post">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
 
   <p>
     <label for="title_input">Title</label>
-    <input type="text" name="title" id="title_input">
+    <input id="title_input" type="text" name="entry[title]">
   </p>
 
   <p>
     <label for="description_input">Description</label>
-    <input type="text" name="description" id="description_input">
+    <textarea id="description_input" name="entry[description]"></textarea>
   </p>
 
   <p>
-    <label for="occurred_on_input">Occurred On</label>
-    <input type="date" name="occurred_on" id="occurred_on_input">
+    <label for="occurred_on_input">Occurred on</label>
+    <input id="occurred_on_input" type="date" name="entry[occurred_on]">
   </p>
 
-  <button>Save</button>
+  <button>Create Entry</button>
 </form>

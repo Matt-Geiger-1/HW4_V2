@@ -1,12 +1,20 @@
+# Handles display and creation of places
 class PlacesController < ApplicationController
-
   def index
     @places = Place.all
   end
 
   def show
     @place = Place.find_by({ "id" => params["id"] })
-    @entries = Entry.where({ "place_id" => @place["id"] })
+
+    if logged_in?
+      @entries = Entry.where({
+        "place_id" => @place["id"],
+        "user_id" => current_user["id"]
+      })
+    else
+      @entries = []
+    end
   end
 
   def new
@@ -18,5 +26,4 @@ class PlacesController < ApplicationController
     @place.save
     redirect_to "/places"
   end
-
 end

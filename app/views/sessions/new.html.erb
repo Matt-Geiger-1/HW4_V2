@@ -1,6 +1,20 @@
+<%# Login form  %>
 <h1>Login</h1>
 
 <form action="/sessions" method="post">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
 
-  <button>Login<button>
+  <div>
+    <label for="email_input">Email</label>
+    <input id="email_input" type="email" name="email">
+  </div>
+
+  <div>
+    <label for="password_input">Password</label>
+    <input id="password_input" type="password" name="password">
+  </div>
+
+  <div>
+    <button>Login</button>
+  </div>
 </form>
