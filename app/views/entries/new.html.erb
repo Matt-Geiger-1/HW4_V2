@@ -1,6 +1,6 @@
 <h1 class="mb-3">New Entry</h1>
 
-<form action="/places/<%= @place["id"] %>/entries" method="post">
+<form action="/places/<%= @place["id"] %>/entries" method="post" enctype="multipart/form-data">
   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
 
   <div class="mb-3">
@@ -16,6 +16,11 @@
   <div class="mb-3">
     <label for="occurred_on_input" class="form-label">Occurred on</label>
     <input id="occurred_on_input" type="date" name="entry[occurred_on]" class="form-control">
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Image</label>
+    <input type="file" name="entry[image]" class="form-control">
   </div>
 
   <button class="btn btn-primary">Create Entry</button>

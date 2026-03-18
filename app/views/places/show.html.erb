@@ -10,6 +10,9 @@
           <h3 class="card-title h5"><%= entry["title"] %></h3>
           <h4 class="card-subtitle mb-2 text-muted h6"><%= entry["occurred_on"] %></h4>
           <p class="card-text"><%= entry["description"] %></p>
+<% if entry["image"] != nil %>
+  <img src="/uploads/<%= entry["image"] %>" class="img-fluid mt-2">
+<% end %>
         </div>
       </div>
     </div>
