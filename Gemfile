@@ -9,12 +9,13 @@ gem "bcrypt", "~> 3.1.7"
 gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 gem "cgi"
 
-# PostgreSQL for production
-gem "pg"
-
 group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
   gem "sqlite3", "~> 2.1"
+end
+
+group :production do
+  gem "pg"
 end
 
 group :development do

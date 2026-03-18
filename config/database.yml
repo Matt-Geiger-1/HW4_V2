@@ -13,4 +13,8 @@ test:
   database: db/test.sqlite3
 
 production:
-  url: <%= ENV["DATABASE_URL"] %>
+  <<: *default
+  adapter: postgresql
+  database: hw4_v2_production
+  username: hw4_v2
+  password: <%= ENV["HW4_V2_DATABASE_PASSWORD"] %>
